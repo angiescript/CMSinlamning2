@@ -12,19 +12,19 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string",
       "required": true
     },
-    "Author": {
+    "author": {
       "type": "string",
       "required": true
     },
-    "Pages": {
+    "pages": {
       "type": "integer",
       "required": true
     },
-    "Rating": {
+    "rating": {
       "type": "integer",
       "required": true,
       "max": 5,

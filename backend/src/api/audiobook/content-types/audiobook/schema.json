@@ -12,15 +12,15 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string",
       "required": true
     },
-    "Released": {
+    "released": {
       "type": "date",
       "required": true
     },
-    "Rating": {
+    "rating": {
       "type": "integer",
       "required": true,
       "max": 5,
@@ -32,7 +32,7 @@
       "target": "api::genre.genre",
       "inversedBy": "audiobooks"
     },
-    "Length": {
+    "length": {
       "type": "integer",
       "default": 0,
       "required": true,
