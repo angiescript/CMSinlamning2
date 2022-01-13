@@ -3,7 +3,7 @@ import React from "react";
 const RenderedWorks = ({ works, filter }) => {
 
   let filterWorks = (works, filter) => {
-    if (filter) {
+    if (filter && filter !== "*") {
       return works.map((work, i) =>
         work.attributes.genres.data.map((genre) => {
           return (

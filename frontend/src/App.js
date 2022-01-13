@@ -1,4 +1,5 @@
 import "./App.css";
+import logo from "./logo.png";
 import { useState, useEffect } from "react";
 import RenderedWorks from "./components/RenderedWorks";
 import RenderedOpposites from "./components/RenderedOpposites";
@@ -9,7 +10,7 @@ function App() {
   const [genres, setGenres] = useState([]);
   const [filter, setFilter] = useState("");
 
-  let fetchWorks = async (choice) => {
+  const fetchWorks = async (choice) => {
     try {
       const resp = await fetch(
         `http://localhost:1337/api/${choice}?populate=*`
@@ -21,7 +22,7 @@ function App() {
     }
   };
 
-  let fetchGenres = async () => {
+  const fetchGenres = async () => {
     try {
       const resp = await fetch("http://localhost:1337/api/genres");
       const fetchedGenres = await resp.json();
@@ -50,48 +51,71 @@ function App() {
 
   return (
     <div className="App">
-      <div className="bookOrAudio">
-        {!typeChoice ? <p>Vad vill du visa?</p> : <p>Välj igen:</p>}
+      <header className="App-header">
+        <img className="logo-header" src={logo} alt="logo" />
+        <h1>Bibliotekssök</h1>
+      </header>
 
-        <button onClick={handleChoice} className="choiceButton" value="books">
-          Böcker
-        </button>
+      <div className="content">
+        <div className="bookOrAudio">
+          {!typeChoice ? (
+            <p className="originQuestion">Vad vill du visa?</p>
+          ) : (
+            <p>Klicka på knapparna igen för att välja om:</p>
+          )}
 
-        <button
-          onClick={handleChoice}
-          className="choiceButton"
-          value="audioBooks"
-        >
-          Ljudböcker
-        </button>
-      </div>
+          <button onClick={handleChoice} className="choiceButton" value="books">
+            Böcker
+          </button>
 
-      <div className="filteringOptions">
-        <select onChange={handleGenre}>
-          <option value="*">Pick a genre...</option>
-          {genres.map((genre, i) => (
-            <option key={i} value={genre.attributes.genre}>
-              {genre.attributes.genre}
-            </option>
-          ))}
-        </select>
-      </div>
+          <button
+            onClick={handleChoice}
+            className="choiceButton"
+            value="audioBooks"
+          >
+            Ljudböcker
+          </button>
+        </div>
 
-      <div className="mainContent">
-        {typeChoice ? (
-          <div>
-            {!filter ? (
-              <p>Visar samtliga verk:</p>
+        <div className="mainFlexbox">
+          {typeChoice && (
+            <div className="filteringOptions">
+              <select onChange={handleGenre}>
+                <option value="*">Välj genre</option>
+                {genres.map((genre, i) => (
+                  <option key={i} value={genre.attributes.genre}>
+                    {genre.attributes.genre}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          <div className="results">
+            {typeChoice ? (
+              <div>
+                {!filter ? (
+                  <p>Visar samtliga resultat:</p>
+                ) : (
+                  <div>
+                    {filter !== "*" ? (
+                      <p>Visar verk inom {filter}:</p>
+                    ) : (
+                      <p>Visar samtliga resultat:</p>
+                    )}
+                  </div>
+                )}
+              </div>
             ) : (
-              <p>Visar verk inom {filter}:</p>
+              <p>Vänligen välj om du vill visa upp böcker eller ljudböcker.</p>
+            )}
+
+            <RenderedWorks works={works} filter={filter} />
+            {filter && (
+              <RenderedOpposites typeChoice={typeChoice} filter={filter} />
             )}
           </div>
-        ) : <p>Välj att visa upp böcker eller ljudböcker.</p>}
-
-        <RenderedWorks works={works} filter={filter} />
-        {filter && (
-          <RenderedOpposites typeChoice={typeChoice} filter={filter} />
-        )}
+        </div>
       </div>
     </div>
   );
