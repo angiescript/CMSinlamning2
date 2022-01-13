@@ -44,17 +44,14 @@ function App() {
   useEffect(() => {
     if (typeChoice) {
       fetchWorks(typeChoice);
+      fetchGenres();
     }
   }, [typeChoice]);
-
-  useEffect(() => {
-    fetchGenres();
-  }, []);
 
   return (
     <div className="App">
       <div className="bookOrAudio">
-        <p>Vad vill du visa?</p>
+        {!typeChoice ? <p>Vad vill du visa?</p> : <p>Välj igen:</p>}
 
         <button onClick={handleChoice} className="choiceButton" value="books">
           Böcker
@@ -71,7 +68,7 @@ function App() {
 
       <div className="filteringOptions">
         <select onChange={handleGenre}>
-          <option>Pick a genre...</option>
+          <option value="*">Pick a genre...</option>
           {genres.map((genre, i) => (
             <option key={i} value={genre.attributes.genre}>
               {genre.attributes.genre}
@@ -81,6 +78,16 @@ function App() {
       </div>
 
       <div className="mainContent">
+        {typeChoice ? (
+          <div>
+            {!filter ? (
+              <p>Visar samtliga verk:</p>
+            ) : (
+              <p>Visar verk inom {filter}:</p>
+            )}
+          </div>
+        ) : <p>Välj att visa upp böcker eller ljudböcker.</p>}
+
         <RenderedWorks works={works} filter={filter} />
         {filter && (
           <RenderedOpposites typeChoice={typeChoice} filter={filter} />
