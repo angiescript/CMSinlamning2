@@ -1,6 +1,6 @@
 import React from "react";
-import book from "../book.png";
-import audiobook from "../audiobook.png";
+import book from "../icons/book.png";
+import audiobook from "../icons/audiobook.png";
 import "../Rendered.css";
 
 const RenderedWorks = ({ works, filter }) => {

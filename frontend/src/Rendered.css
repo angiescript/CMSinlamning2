@@ -49,6 +49,12 @@
 .mainDetails {
     display: flex;
     align-items: center;
+    padding: 10px 0;
+    font-size: small;
+}
+
+.mainDetails h3 {
+    margin: 0;
 }
 
 .icon {

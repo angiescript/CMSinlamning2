@@ -1,5 +1,5 @@
 import "./App.css";
-import logo from "./logo.png";
+import logo from "./icons/logo.png";
 import { useState, useEffect } from "react";
 import RenderedWorks from "./components/RenderedWorks";
 import RenderedOpposites from "./components/RenderedOpposites";
@@ -99,7 +99,7 @@ function App() {
                 ) : (
                   <div>
                     {filter !== "*" ? (
-                      <h3>Visar verk inom {filter}:</h3>
+                      <h3>Visar verk inom "{filter}":</h3>
                     ) : (
                       <h3>Visar samtliga resultat:</h3>
                     )}

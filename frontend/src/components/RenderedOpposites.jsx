@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import book from "../book.png";
-import audiobook from "../audiobook.png";
+import book from "../icons/book.png";
+import audiobook from "../icons/audiobook.png";
 import "../Rendered.css";
 
 const RenderedOpposites = ({ typeChoice, filter }) => {
@@ -37,7 +37,7 @@ const RenderedOpposites = ({ typeChoice, filter }) => {
     <div className="opposites">
       {filter !== "*" && (
         <>
-          <h3>Verk inom {filter} i andra format:</h3>
+          <h3>Verk inom "{filter}" i andra format:</h3>
           <div className="worksGrid">
             {opposites.map((work, i) =>
               work.attributes.genres.data.map((genre) => {
