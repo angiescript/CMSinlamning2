@@ -92,23 +92,21 @@ function App() {
           )}
 
           <div className="results">
-            {typeChoice ? (
+            {typeChoice && (
               <div>
                 {!filter ? (
-                  <p>Visar samtliga resultat:</p>
+                  <h3>Visar samtliga resultat:</h3>
                 ) : (
                   <div>
                     {filter !== "*" ? (
-                      <p>Visar verk inom {filter}:</p>
+                      <h3>Visar verk inom {filter}:</h3>
                     ) : (
-                      <p>Visar samtliga resultat:</p>
+                      <h3>Visar samtliga resultat:</h3>
                     )}
                   </div>
                 )}
               </div>
-            ) : (
-              <p>Vänligen välj om du vill visa upp böcker eller ljudböcker.</p>
-            )}
+            ) }
 
             <RenderedWorks works={works} filter={filter} />
             {filter && (
