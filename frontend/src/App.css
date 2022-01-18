@@ -1,4 +1,7 @@
-
+.App {
+  background-color: rgb(219, 219, 219);
+  min-height: 100vh;
+}
 
 .App-header {
   background-color: #8a2556;
@@ -23,8 +26,7 @@
 }
 
 .content {
-  background-color: rgb(219, 219, 219);
-  height: calc(100vh - 5rem);
+  padding-bottom: 4rem;
 }
 
 .bookOrAudio {
@@ -32,7 +34,7 @@
   padding: 2rem;
 }
 .bookOrAudio .originQuestion {
-  font-size: 50px; 
+  font-size: 50px;
   margin-top: 1rem;
 }
 
@@ -47,7 +49,7 @@
   display: inline-block;
   font-size: 1rem;
   min-width: 8rem;
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   cursor: pointer;
 }
 
@@ -60,25 +62,25 @@
   justify-content: flex-start;
 }
 
-
 .filteringOptions {
   margin-left: 2rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
- border: 1px darkgray solid;
+  border: 1px darkgray solid;
 }
 
 .filteringOptions select {
-
   background-color: white;
   border: 1px darkgray solid;
-
   width: 8rem;
-
   font-family: inherit;
   font-size: inherit;
   cursor: inherit;
   outline: none;
+}
+
+.results {
+  padding-left: 2rem;
 }

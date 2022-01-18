@@ -61,7 +61,7 @@ function App() {
           {!typeChoice ? (
             <p className="originQuestion">Vad vill du visa?</p>
           ) : (
-            <p>Klicka på knapparna igen för att välja om:</p>
+            <></>
           )}
 
           <button onClick={handleChoice} className="choiceButton" value="books">
